@@ -10,9 +10,8 @@ defmodule Words do
   def count(sentence) do
     words =
       sentence
-      |> String.replace(~r/([^-\w]|_)/u, " ")
       |> String.downcase()
-      |> String.split()
+      |> String.split(~r/([^-\w]|_)/u, trim: true)
 
     word_count = Map.new(words, &{&1, 0})
 
